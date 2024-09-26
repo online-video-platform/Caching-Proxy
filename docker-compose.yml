@@ -48,10 +48,10 @@ services:
     environment:
       - DOMAIN_FROM_ENV=http-192-168-1-104-8090.schnworks.com
       - NGINX_ENVSUBST_OUTPUT_DIR=/tmp/nginx/conf.d
-    image: nginx
+    image: ghcr.io/online-video-platform/caching-proxy:main
     tmpfs:
       - /tmp/nginx/conf.d:rw,exec,nosuid,nodev,size=10M,uid=1014,gid=1014
     volumes:
-      - ./var/cache/:/var/cache/
+      - ./var/cache/nginx/:/var/cache/nginx/
     ports:
       - "8091:80"
